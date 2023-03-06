@@ -2,6 +2,9 @@ package com.uco.stloan.controller.articulo;
 
 
 import com.uco.stloan.Services.Articulo.ArticuloServices;
+import com.uco.stloan.dto.PatchDto;
+import com.uco.stloan.exception.NotFoundEx;
+import com.uco.stloan.exception.NotYetImplementedEx;
 import com.uco.stloan.model.articulo.Articulo;
 import com.uco.stloan.model.persona.Persona;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +61,18 @@ public class ArticuloController {
 
         articleDB = articleService.save(articleDB);
         return new ResponseEntity<>(article, HttpStatus.CREATED);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Boolean> updatePartially(@PathVariable(name = "id") int id,
+                                                   @RequestBody PatchDto dto) throws NotYetImplementedEx, NotFoundEx {
+        // skipping validations for brevity
+        if (dto.getOp().equalsIgnoreCase("update")) {
+            boolean result = articleService.partialUpdate(id, dto.getKey(), dto.getValue());
+            return new ResponseEntity<>(result, HttpStatus.ACCEPTED);
+        } else {
+            throw new NotYetImplementedEx("NOT_YET_IMPLEMENTED");
+        }
     }
 
 
