@@ -12,7 +12,7 @@ public class Persona {
 
     private Long id;
     private String identificacion;
-    private String nombre;
+    private String name;
     private String apellido;
     private String email;
     private String contraseña;
@@ -25,9 +25,9 @@ public class Persona {
     public Persona ( ) {
     }
 
-    public Persona ( String identificacion, String nombre, String apellido, String email, String contraseña, String celular, String direccion, String rol, String codigoRFID ) {
+    public Persona ( String identificacion, String name, String apellido, String email, String contraseña, String celular, String direccion, String rol, String codigoRFID ) {
         this.identificacion = identificacion;
-        this.nombre = nombre;
+        this.name = name;
         this.apellido = apellido;
         this.email = email;
         this.contraseña = contraseña;

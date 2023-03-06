@@ -1,6 +1,9 @@
 package com.uco.stloan.controller.persona;
 
 import com.uco.stloan.Services.Persona.PersonaService;
+import com.uco.stloan.dto.PatchDto;
+import com.uco.stloan.exception.NotFoundEx;
+import com.uco.stloan.exception.NotYetImplementedEx;
 import com.uco.stloan.model.persona.Persona;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -67,6 +70,18 @@ public class PersonaController {
 
         personaDB = personaService.save(personaDB);
         return new ResponseEntity<>(persona, HttpStatus.CREATED);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Boolean> updatePartially(@PathVariable(name = "id") int id,
+                                                   @RequestBody PatchDto dto) throws NotYetImplementedEx, NotFoundEx {
+        // skipping validations for brevity
+        if (dto.getOp().equalsIgnoreCase("update")) {
+            boolean result = personaService.partialUpdate(id, dto.getKey(), dto.getValue());
+            return new ResponseEntity<>(result, HttpStatus.ACCEPTED);
+        } else {
+            throw new NotYetImplementedEx("NOT_YET_IMPLEMENTED");
+        }
     }
 
 
