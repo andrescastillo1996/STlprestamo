@@ -48,7 +48,7 @@ public class ArticuloController {
         }
         articleCurrent = new Articulo(article.getRef(),article.getNombre(),article.getCantidad());
 
-        //empleadoDB.setNombre(empleadoCurrent.getNombre());
+
         articleDB.setId(articleCurrent.getId());
         articleDB.setNombre(articleCurrent.getNombre());
         articleDB.setCantidad(articleCurrent.getCantidad());
