@@ -50,7 +50,7 @@ public class PersonaImpl implements PersonaService {
                 persona.setIdentificacion(value);
             }
             if (key.equalsIgnoreCase("nombre")) {
-                persona.setNombre(value);
+                persona.setName(value);
             }
             if (key.equalsIgnoreCase("apellido")) {
                 persona.setApellido(value);
@@ -79,5 +79,6 @@ public class PersonaImpl implements PersonaService {
         } else {
             throw new NotFoundEx("RESOURCE_NOT_FOUND");
         }
+
     }
 }

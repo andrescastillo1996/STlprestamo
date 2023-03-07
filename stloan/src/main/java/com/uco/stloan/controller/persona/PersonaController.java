@@ -49,14 +49,14 @@ public class PersonaController {
             return new ResponseEntity<>(personaService.findById(idPersona), HttpStatus.BAD_REQUEST);
         }
         personCurrent = new Persona(persona.getIdentificacion(),
-                persona.getNombre(),persona.getApellido(),
+                persona.getName(),persona.getApellido(),
                 persona.getEmail(),persona.getContraseña(),
                 persona.getCelular(),persona.getDireccion(),
         persona.getRol(),persona.getCodigoRFID());
 
         //empleadoDB.setNombre(empleadoCurrent.getNombre());
         personaDB.setIdentificacion(personCurrent.getIdentificacion());
-        personaDB.setNombre(personCurrent.getNombre());
+        personaDB.setName(personCurrent.getName());
         personaDB.setApellido(personCurrent.getApellido());
         personaDB.setEmail(personCurrent.getEmail());
         personaDB.setContraseña(personCurrent.getContraseña());
