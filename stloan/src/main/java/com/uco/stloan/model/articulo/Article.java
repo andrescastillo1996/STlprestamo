@@ -8,20 +8,20 @@ import javax.persistence.Entity;
 @Entity
 @Getter
 @Setter
-public class Articulo {
+public class Article {
 
     private Long id;
     private String ref;
-    private String nombre;
-    private int cantidad;
+    private String name;
+    private int quantity;
 
-    public Articulo() {
+    public Article() {
 
     }
 
-    public Articulo (String ref, String nombre, int cantidad ) {
+    public Article(String ref, String name, int quantity ) {
         this.ref = ref;
-        this.nombre = nombre;
-        this.cantidad = cantidad;
+        this.name = name;
+        this.quantity = quantity;
     }
 }
