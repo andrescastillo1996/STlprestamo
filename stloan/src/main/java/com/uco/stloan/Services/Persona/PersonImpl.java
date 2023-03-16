@@ -2,9 +2,13 @@ package com.uco.stloan.Services.Persona;
 
 import com.uco.stloan.Repository.PersonRepository;
 import com.uco.stloan.dto.PersonDTO;
+import com.uco.stloan.exception.GlobalExeptionHandler;
 import com.uco.stloan.exception.NotFoundEx;
 import com.uco.stloan.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +18,9 @@ import java.util.Optional;
 
 @Service
 public class PersonImpl implements PersonService {
+
+    @Autowired
+    public PersonService personService;
 
     private final PersonRepository personRepository;
     @Autowired
@@ -85,4 +92,21 @@ public class PersonImpl implements PersonService {
             throw new NotFoundEx("RESOURCE_NOT_FOUND");
         }
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public boolean existByEmail(String email){
+        try{
+            PersonDTO person = new PersonDTO();
+            boolean existEmail = personService.existByEmail(person.getEmail());
+            if (existEmail){
+                throw new GlobalExeptionHandler(HttpStatus.BAD_REQUEST);
+            }
+
+        }catch (DataAccessException e){
+
+        }
+        return personRepository.existByEmail(email);
+    }
+
 }

@@ -14,5 +14,6 @@ public interface PersonService {
     public Person save(Person person);
     public void deleteById(Long id);
     public boolean partialUpdate(Long id, String key, String value) throws NotFoundEx;
+    public boolean existByEmail(String email);
 
 }

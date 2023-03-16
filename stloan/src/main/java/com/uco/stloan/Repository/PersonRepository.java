@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PersonRepository extends JpaRepository<Person, Long> {
+
+    public boolean existByEmail(String email);
    /* @Query(value = "SELECT * FROM PEAPLE WHERE identificacion=? ", nativeQuery = true)
     Persona findByIdentification(String identificacion);
 
